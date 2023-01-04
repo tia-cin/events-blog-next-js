@@ -1,6 +1,7 @@
+import { GetStaticProps, NextPage } from "next";
 import React from "react";
 
-function Events() {
+const Events: NextPage = ({ title }: any) => {
   return (
     <div>
       <h1>Events Page</h1>
@@ -26,6 +27,14 @@ function Events() {
       </main>
     </div>
   );
-}
+};
 
 export default Events;
+
+export const getServerSideProps: GetStaticProps = (context) => {
+  return {
+    props: {
+      title: "Hello!",
+    },
+  };
+};
