@@ -1,5 +1,6 @@
 export interface City {
   city: string;
+  desc: string;
   events: Event[];
 }
 
