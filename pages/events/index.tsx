@@ -1,24 +1,24 @@
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import React from "react";
 
-const Events: NextPage = ({ title }: any) => {
+const Events: NextPage = () => {
   return (
     <div>
       <h1>Events Page</h1>
       <main>
-        <a href="">
+        <a href="/events/bali">
           <section>
             <img />
             <h2>Events in Bali</h2>
           </section>
         </a>
-        <a href="">
+        <a href="/events/miami">
           <section>
             <img />
             <h2>Events in Miami</h2>
           </section>
         </a>
-        <a href="">
+        <a href="/events/tokyo">
           <section>
             <img />
             <h2>Events in Tokyo</h2>
@@ -30,11 +30,3 @@ const Events: NextPage = ({ title }: any) => {
 };
 
 export default Events;
-
-export const getServerSideProps: GetStaticProps = (context) => {
-  return {
-    props: {
-      title: "Hello!",
-    },
-  };
-};

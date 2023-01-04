@@ -21,7 +21,7 @@ export default function Home() {
         </nav>
       </header>
       <main>
-        <a href="">
+        <a href="/events/bali">
           <section>
             <img />
             <h2>Events in Bali</h2>
@@ -37,7 +37,7 @@ export default function Home() {
             </p>
           </section>
         </a>
-        <a href="">
+        <a href="/events/miami">
           <section>
             <img />
             <h2>Events in Miami</h2>
@@ -52,7 +52,7 @@ export default function Home() {
             </p>
           </section>
         </a>
-        <a href="">
+        <a href="/events/tokyo">
           <section>
             <img />
             <h2>Events in Tokyo</h2>
