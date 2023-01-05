@@ -1,12 +1,17 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { City } from "../../../types";
-import { Title } from "../../../components";
+import { City, Event } from "../../../types";
+import { CardEvent, Title } from "../../../components";
 
 const index: NextPage<{ data: City }> = ({ data }) => {
   return (
     <div>
       <Title text={`Events in ${data.city}`} />
+      <div>
+        {data.events.map((event: Event, i: number) => (
+          <CardEvent event={event} />
+        ))}
+      </div>
     </div>
   );
 };

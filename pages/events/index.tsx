@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
 import React from "react";
-import { Card, Title } from "../../components";
+import { CardCity, Title } from "../../components";
 import { City } from "../../types";
 
 const Events: NextPage<{ events: City[] }> = ({ events }) => {
@@ -9,7 +9,7 @@ const Events: NextPage<{ events: City[] }> = ({ events }) => {
       <Title text="Events Page" />
       <div className="grid grid-cols-3 gap-8">
         {events.map((city: City, i: number) => (
-          <Card key={i} city={city} />
+          <CardCity key={i} city={city} />
         ))}
       </div>
     </div>

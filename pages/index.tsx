@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
-import { Card, Title } from "../components";
+import { CardCity, Title } from "../components";
 import { City } from "../types";
 
 const Home: NextPage<{ events: City[] }> = ({ events }) => {
@@ -8,7 +8,7 @@ const Home: NextPage<{ events: City[] }> = ({ events }) => {
       <Title text="Explore events tn these cities" />
       <div className="grid grid-cols-3 gap-8">
         {events.map((city: City, i: number) => (
-          <Card city={city} key={i} />
+          <CardCity city={city} key={i} />
         ))}
       </div>
     </main>

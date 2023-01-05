@@ -1,4 +1,4 @@
-import Card from "./Card";
+import { CardCity, CardEvent } from "./Card";
 import Title from "./Title";
 
-export { Card, Title };
+export { CardCity, CardEvent, Title };
