@@ -44,14 +44,14 @@ export default function Home({ events }: any) {
       <main className="grid grid-cols-3 mx-16 gap-8">
         {events.map((city: City, i: number) => (
           <section className="bg-slate-200 rounded p-2 my-5" key={i}>
-            <div>
-              <img />
-            </div>
-            <div>
-              <h2 className="text-lg font-medium capitalize">
-                Events in {city.city}
-              </h2>
-              <p>{city.desc}</p>
+            <div className="">
+              <img src={city.image} className="w-full h-200 rounded" />
+              <div className="my-2">
+                <h2 className="text-lg font-medium capitalize">
+                  Events in {city.city}
+                </h2>
+                <p>{city.desc.slice(0, 250).concat("...")}</p>
+              </div>
             </div>
             <button
               onClick={() => window.open(`/events/${city.city}`, "_self")}
