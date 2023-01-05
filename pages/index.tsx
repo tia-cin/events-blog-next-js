@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { Card, Title } from "../components";
 import { City } from "../types";
 
-const Home: NextPage = ({ events }: any) => {
+const Home: NextPage<{ events: City[] }> = ({ events }) => {
   return (
     <main>
       <Title text="Explore events tn these cities" />

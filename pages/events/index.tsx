@@ -3,7 +3,7 @@ import React from "react";
 import { Card, Title } from "../../components";
 import { City } from "../../types";
 
-const Events: NextPage = ({ events }: any) => {
+const Events: NextPage<{ events: City[] }> = ({ events }) => {
   return (
     <div>
       <Title text="Events Page" />
