@@ -9,7 +9,7 @@ const index: NextPage<{ data: City }> = ({ data }) => {
       <Title text={`Events in ${data.city}`} />
       <div className="grid grid-cols-2 gap-8">
         {data.events.map((event: Event, i: number) => (
-          <CardEvent event={event} />
+          <CardEvent event={event} city={data.city} />
         ))}
       </div>
     </div>

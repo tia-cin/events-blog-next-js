@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import type { AppProps } from "next/app";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -17,29 +19,31 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className="bg-slate-200 w-full h-full min-h-screen">
         <header className="bg-slate-300 h-16 p-1.5">
           <nav className="flex items-center justify-between">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/3959/3959542.png"
-              className="w-10 h-10 m-1 mx-3 hover:scale-105 transition-all cursor-pointer"
-            />
+            <Link href="/">
+              <Image
+                alt="Events Blog"
+                width={100}
+                height={10}
+                src="https://cdn-icons-png.flaticon.com/512/3959/3959542.png"
+                className="w-10 h-10 m-1 mx-3 hover:scale-105 transition-all cursor-pointer"
+              />
+            </Link>
             <div className="w-80 flex justify-evenly">
-              <a
-                href="/"
-                className="font-semibold text-lg hover:text-white transition-all hover:text-xl"
-              >
-                Home
-              </a>
-              <a
-                href="/events"
-                className="font-semibold text-lg hover:text-white transition-all hover:text-xl"
-              >
-                Events
-              </a>
-              <a
-                href="/about"
-                className="font-semibold text-lg hover:text-white transition-all hover:text-xl"
-              >
-                About Us
-              </a>
+              <Link href="/">
+                <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
+                  Home
+                </span>
+              </Link>
+              <Link href="/events">
+                <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
+                  Events
+                </span>
+              </Link>
+              <Link href="/about">
+                <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
+                  About us
+                </span>
+              </Link>
             </div>
           </nav>
         </header>

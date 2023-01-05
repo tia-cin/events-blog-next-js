@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { City, Event } from "../types";
 
@@ -20,17 +21,22 @@ export const CardCity: React.FC<{ city: City }> = ({ city }) => {
           <p>{city.desc.slice(0, 250).concat("...")}</p>
         </div>
       </div>
-      <button
-        onClick={() => window.open(`/events/${city.city}`, "_self")}
-        className="border-2 border-gray-900 w-full rounded font-light text-xl my-1"
-      >
-        Read More
-      </button>
+      <Link href={`/events/${city.city}`}>
+        <button
+          // onClick={() => window.open(`/events/${city.city}`, "_self")}
+          className="border-2 border-gray-900 w-full rounded font-light text-xl my-1"
+        >
+          Read More
+        </button>
+      </Link>
     </section>
   );
 };
 
-export const CardEvent: React.FC<{ event: Event }> = ({ event }) => (
+export const CardEvent: React.FC<{ event: Event; city: string }> = ({
+  event,
+  city,
+}) => (
   <div className="flex bg-slate-100 p-2 rounded">
     <Image
       src={event.image}
@@ -42,12 +48,16 @@ export const CardEvent: React.FC<{ event: Event }> = ({ event }) => (
     <div className="mx-2 ">
       <h2 className="text-3xl font-medium">{event.name}</h2>
       <p>{event.description.slice(0, 200).concat("...")}</p>
-      <button
-        // onClick={() => window.open(`/events/${event.city}`, "_self")}
-        className="border-2 border-gray-900 w-full rounded font-light text-xl my-1"
+      <Link
+        href={`/events/${city}/${event.name
+          .split(" ")
+          .join("-")
+          .toLocaleLowerCase()}`}
       >
-        Read More
-      </button>
+        <button className="border-2 border-gray-900 w-full rounded font-light text-xl my-1">
+          Read More
+        </button>
+      </Link>
     </div>
   </div>
 );
