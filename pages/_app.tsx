@@ -51,7 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <footer className="flex justify-center mt-10">
-          <div className="bottom-0 absolute mb-3">
+          <div className="bottom-0 relative mb-3">
             <p className="text-center font-medium">
               Copyright © 2019 by Events Blog <br />
               All Rights Reserved.

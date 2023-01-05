@@ -46,7 +46,9 @@ export const CardEvent: React.FC<{ event: Event; city: string }> = ({
       className="rounded w-300 h-200"
     />
     <div className="mx-2 ">
-      <h2 className="text-3xl font-medium">{event.name}</h2>
+      <h2 className="text-3xl font-medium capitalize">
+        {event.name.split("-").join(" ")}
+      </h2>
       <p>{event.description.slice(0, 200).concat("...")}</p>
       <Link passHref href={`/events/${city}/${event.name}`}>
         <button className="border-2 border-gray-900 w-full rounded font-light text-xl my-1">
