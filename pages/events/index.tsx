@@ -1,11 +1,11 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import React from "react";
 
 const Events: NextPage = () => {
   return (
-    <div>
-      <h1>Events Page</h1>
-      <main>
+    <div className="h-full mx-16">
+      <h1 className=" text-2xl font-semibold mt-5">Events Page</h1>
+      <div>
         <a href="/events/bali">
           <section>
             <img />
@@ -24,9 +24,19 @@ const Events: NextPage = () => {
             <h2>Events in Tokyo</h2>
           </section>
         </a>
-      </main>
+      </div>
     </div>
   );
 };
 
 export default Events;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { events } = await require("../data/data.json");
+
+  return {
+    props: {
+      events,
+    },
+  };
+};

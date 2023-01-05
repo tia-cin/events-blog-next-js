@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { City } from "../types";
@@ -14,60 +15,37 @@ export default function Home({ events }: any) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="bg-slate-300 h-16 p-1.5">
-        <nav className="flex items-center justify-between">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3959/3959542.png"
-            className="w-10 h-10 m-1 mx-3 hover:scale-105 transition-all cursor-pointer"
-          />
-          <div className="w-80 flex justify-evenly">
-            <a
-              href="/"
-              className="font-semibold text-lg hover:text-white transition-all hover:text-xl"
-            >
-              Home
-            </a>
-            <a
-              href="/events"
-              className="font-semibold text-lg hover:text-white transition-all hover:text-xl"
-            >
-              Events
-            </a>
-            <a
-              href="/about"
-              className="font-semibold text-lg hover:text-white transition-all hover:text-xl"
-            >
-              About Us
-            </a>
-          </div>
-        </nav>
-      </header>
-      <main className="grid grid-cols-3 mx-16 gap-8">
-        {events.map((city: City, i: number) => (
-          <section className="bg-slate-200 rounded p-2 my-5" key={i}>
-            <div className="">
-              <Image
-                width={400}
-                height={200}
-                src={city.image}
-                className=" w-full rounded"
-                alt={`${city.city}`}
-              />
-              <div className="my-2">
-                <h2 className="text-lg font-medium capitalize">
-                  Events in {city.city}
-                </h2>
-                <p>{city.desc.slice(0, 250).concat("...")}</p>
+      <main className="mx-16">
+        <h1 className=" text-2xl font-semibold mt-5">
+          Explore events in these cities
+        </h1>
+        <div className="grid grid-cols-3 gap-8">
+          {events.map((city: City, i: number) => (
+            <section className="bg-slate-200 rounded p-2 my-5" key={i}>
+              <div className="">
+                <Image
+                  width={400}
+                  height={200}
+                  src={city.image}
+                  className=" w-full rounded"
+                  alt={`${city.city}`}
+                />
+                <div className="my-2">
+                  <h2 className="text-lg font-medium capitalize">
+                    Events in {city.city}
+                  </h2>
+                  <p>{city.desc.slice(0, 250).concat("...")}</p>
+                </div>
               </div>
-            </div>
-            <button
-              onClick={() => window.open(`/events/${city.city}`, "_self")}
-              className="border-2 border-gray-900 w-full rounded font-light text-xl my-1"
-            >
-              Read More
-            </button>
-          </section>
-        ))}
+              <button
+                onClick={() => window.open(`/events/${city.city}`, "_self")}
+                className="border-2 border-gray-900 w-full rounded font-light text-xl my-1"
+              >
+                Read More
+              </button>
+            </section>
+          ))}
+        </div>
       </main>
       <footer className="flex justify-center">
         <div className="bottom-0 fixed mb-3">
@@ -81,7 +59,7 @@ export default function Home({ events }: any) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { events } = await require("../data/data.json");
 
   return {
