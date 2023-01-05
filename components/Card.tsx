@@ -31,9 +31,23 @@ export const CardCity: React.FC<{ city: City }> = ({ city }) => {
 };
 
 export const CardEvent: React.FC<{ event: Event }> = ({ event }) => (
-  <div>
-    <Image src={event.image} alt={event.name} width={400} height={200} />
-    <h2>{event.name}</h2>
-    <p>{event.description}</p>
+  <div className="flex bg-slate-100 p-2 rounded">
+    <Image
+      src={event.image}
+      alt={event.name}
+      width={400}
+      height={200}
+      className="rounded w-300 h-200"
+    />
+    <div className="mx-2 ">
+      <h2 className="text-3xl font-medium">{event.name}</h2>
+      <p>{event.description.slice(0, 200).concat("...")}</p>
+      <button
+        // onClick={() => window.open(`/events/${event.city}`, "_self")}
+        className="border-2 border-gray-900 w-full rounded font-light text-xl my-1"
+      >
+        Read More
+      </button>
+    </div>
   </div>
 );
