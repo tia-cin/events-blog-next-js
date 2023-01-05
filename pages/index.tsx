@@ -1,6 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
-import Card from "../components/Card";
-import Title from "../components/Title";
+import { Card, Title } from "../components";
 import { City } from "../types";
 
 const Home: NextPage = ({ events }: any) => {

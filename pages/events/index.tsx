@@ -1,8 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
-import Image from "next/image";
 import React from "react";
-import Card from "../../components/Card";
-import Title from "../../components/Title";
+import { Card, Title } from "../../components";
 import { City } from "../../types";
 
 const Events: NextPage = ({ events }: any) => {
