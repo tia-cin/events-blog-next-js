@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { City } from "../types";
 
 export default function Home({ events }: any) {
@@ -45,7 +46,13 @@ export default function Home({ events }: any) {
         {events.map((city: City, i: number) => (
           <section className="bg-slate-200 rounded p-2 my-5" key={i}>
             <div className="">
-              <img src={city.image} className="w-full h-200 rounded" />
+              <Image
+                width={400}
+                height={200}
+                src={city.image}
+                className=" w-full rounded"
+                alt={`${city.city}`}
+              />
               <div className="my-2">
                 <h2 className="text-lg font-medium capitalize">
                   Events in {city.city}
