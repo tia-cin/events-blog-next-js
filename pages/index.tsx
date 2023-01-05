@@ -45,6 +45,9 @@ export default function Home({ events }: any) {
         {events.map((city: City, i: number) => (
           <section className="bg-slate-200 rounded p-2 my-5" key={i}>
             <div>
+              <img />
+            </div>
+            <div>
               <h2 className="text-lg font-medium capitalize">
                 Events in {city.city}
               </h2>
