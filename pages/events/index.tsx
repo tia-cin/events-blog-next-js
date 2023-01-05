@@ -1,29 +1,18 @@
 import { GetStaticProps, NextPage } from "next";
+import Image from "next/image";
 import React from "react";
+import Card from "../../components/Card";
+import Title from "../../components/Title";
+import { City } from "../../types";
 
-const Events: NextPage = () => {
+const Events: NextPage = ({ events }: any) => {
   return (
-    <div className="h-full mx-16">
-      <h1 className=" text-2xl font-semibold mt-5">Events Page</h1>
-      <div>
-        <a href="/events/bali">
-          <section>
-            <img />
-            <h2>Events in Bali</h2>
-          </section>
-        </a>
-        <a href="/events/miami">
-          <section>
-            <img />
-            <h2>Events in Miami</h2>
-          </section>
-        </a>
-        <a href="/events/tokyo">
-          <section>
-            <img />
-            <h2>Events in Tokyo</h2>
-          </section>
-        </a>
+    <div>
+      <Title text="Events Page" />
+      <div className="grid grid-cols-3 gap-8">
+        {events.map((city: City, i: number) => (
+          <Card key={i} city={city} />
+        ))}
       </div>
     </div>
   );
@@ -32,7 +21,7 @@ const Events: NextPage = () => {
 export default Events;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { events } = await require("../data/data.json");
+  const { events } = await require("../../data/data.json");
 
   return {
     props: {
