@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className="bg-slate-200 w-full h-full min-h-screen">
         <header className="bg-slate-300 h-16 p-1.5">
           <nav className="flex items-center justify-between">
-            <Link href="/">
+            <Link href="/" passHref>
               <Image
                 alt="Events Blog"
                 width={100}
@@ -29,17 +29,17 @@ export default function App({ Component, pageProps }: AppProps) {
               />
             </Link>
             <div className="w-80 flex justify-evenly">
-              <Link href="/">
+              <Link href="/" passHref>
                 <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
                   Home
                 </span>
               </Link>
-              <Link href="/events">
+              <Link href="/events" passHref>
                 <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
                   Events
                 </span>
               </Link>
-              <Link href="/about">
+              <Link href="/about" passHref>
                 <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
                   About us
                 </span>

@@ -21,7 +21,7 @@ export const CardCity: React.FC<{ city: City }> = ({ city }) => {
           <p>{city.desc.slice(0, 250).concat("...")}</p>
         </div>
       </div>
-      <Link href={`/events/${city.city}`}>
+      <Link href={`/events/${city.city}`} passHref>
         <button
           // onClick={() => window.open(`/events/${city.city}`, "_self")}
           className="border-2 border-gray-900 w-full rounded font-light text-xl my-1"
@@ -49,6 +49,7 @@ export const CardEvent: React.FC<{ event: Event; city: string }> = ({
       <h2 className="text-3xl font-medium">{event.name}</h2>
       <p>{event.description.slice(0, 200).concat("...")}</p>
       <Link
+        passHref
         href={`/events/${city}/${event.name
           .split(" ")
           .join("-")

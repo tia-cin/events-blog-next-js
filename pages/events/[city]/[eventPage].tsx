@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 const Event = ({ title }: any) => {
   return <div>{title}</div>;
@@ -7,10 +7,21 @@ const Event = ({ title }: any) => {
 
 export default Event;
 
-export const getServerSideProps: GetStaticProps = (context) => {
-  return {
-    props: {
-      title: "Hello!",
-    },
-  };
-};
+// export const getStaticPaths: GetStaticPaths = async (context) => {
+//   const { events } = await require("../../../data/data.json");
+
+//   return {
+//     paths: {
+//       data: "123",
+//     },
+//     fallback: false,
+//   };
+// };
+
+// export const getServerSideProps: GetStaticProps = (context) => {
+//   return {
+//     props: {
+//       title: "Hello!",
+//     },
+//   };
+// };
