@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-slate-200 w-full h-full min-h-screen">
+      <div className="relative bg-slate-200 w-full h-full min-h-screen">
         <header className="bg-slate-300 h-16 p-1.5">
           <nav className="flex items-center justify-between">
             <Link href="/" passHref>
@@ -47,11 +47,11 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
           </nav>
         </header>
-        <div className="px-16">
+        <div className="md:px-16 px-6">
           <Component {...pageProps} />
         </div>
-        <footer className="flex justify-center mt-10">
-          <div className="bottom-0 absolute mb-3">
+        <footer className="flex justify-center py-10">
+          <div className="bottom-0 absolute my-5">
             <p className="text-center font-medium">
               Copyright © 2019 by Events Blog <br />
               All Rights Reserved.

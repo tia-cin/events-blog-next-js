@@ -37,7 +37,7 @@ export const CardEvent: React.FC<{ event: Event; city: string }> = ({
   event,
   city,
 }) => (
-  <div className="flex bg-slate-100 p-2 rounded">
+  <div className="flex bg-slate-100 p-2 rounded flex-col md:flex-row">
     <Image
       src={event.image}
       alt={event.name}
