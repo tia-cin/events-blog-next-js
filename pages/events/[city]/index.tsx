@@ -3,18 +3,16 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { City, Event } from "../../../types";
 import { CardEvent, Title } from "../../../components";
 
-const index: NextPage<{ data: City }> = ({ data }) => {
-  return (
-    <div>
-      <Title text={`Events in ${data.city}`} />
-      <div className="grid grid-cols-2 gap-8 max-[600px]:gap-3">
-        {data.events.map((event: Event, i: number) => (
-          <CardEvent event={event} city={data.city} />
-        ))}
-      </div>
+const index: NextPage<{ data: City }> = ({ data }) => (
+  <div>
+    <Title text={`Events in ${data.city}`} />
+    <div className="grid grid-cols-2 gap-8 max-[600px]:gap-3">
+      {data.events.map((event: Event, i: number) => (
+        <CardEvent event={event} city={data.city} />
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 export default index;
 
