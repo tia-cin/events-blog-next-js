@@ -4,17 +4,16 @@ import { City, Event } from "../../../types";
 import { Title } from "../../../components";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const EventPage: NextPage<{ event: Event }> = ({ event }) => {
   const router = useRouter();
   const [email, setEmail] = React.useState<string>("");
   const [message, setMessage] = React.useState<string>("");
 
-  const validations = () => {};
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { city, eventPage } = router.query;
     const regex =
@@ -25,6 +24,17 @@ const EventPage: NextPage<{ event: Event }> = ({ event }) => {
     }
 
     try {
+      const response = await axios.post(
+        "/api/email-registration",
+        { email, city, eventPage },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      if (response.status !== 200)
+        throw new Error(`Status Code: ${response.status}`);
+
+      setMessage(response.data.message);
+      setEmail("");
     } catch (error) {
       console.log(error);
     }
