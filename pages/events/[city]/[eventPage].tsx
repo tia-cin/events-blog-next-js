@@ -1,12 +1,9 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { City, Event } from "../../../types";
-import { useRouter } from "next/router";
 
-const EventPage: NextPage<{ events: Event[] }> = ({ events }) => {
-  const router = useRouter();
-
-  // console.log(events);
+const EventPage: NextPage<{ event: Event[] }> = ({ event }) => {
+  console.log(event);
 
   return <div></div>;
 };
@@ -36,13 +33,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { events } = await require("../../../data/data.json");
   const { city, eventPage }: any = params;
-  const event = events.find((c: City) => c.city === city);
-
-  console.log(event);
+  const event = events
+    .find((c: City) => c.city === city)
+    .events.find((ev: Event) => ev.name === eventPage);
 
   return {
     props: {
-      events,
+      event,
     },
   };
 };
