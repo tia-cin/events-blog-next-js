@@ -9,4 +9,5 @@ export interface Event {
   name: string;
   description: string;
   image: any;
+  suscriptions: string[];
 }
