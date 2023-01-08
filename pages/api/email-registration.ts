@@ -26,25 +26,26 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
       res.status(422).json({ message: "Invalid email address" });
     }
 
-    const newEvents = events
-      .map((c: City) =>
-        c.events.map((ev: Event) => {
-          if (c.city === city && ev.name === eventPage) {
-            if (ev.suscription.includes(email))
-              return res.status(409).json({
-                message:
-                  "This email has already been added into the suscription list",
-              });
-            ev.suscription.push(email);
-          }
-          return c;
-        })
-      )
-      .flat(1);
+    let newEvents: City[] = events;
 
-    // fs.writeFileSync(filePath, JSON.stringify({ events: newEvents }));
-    console.log(newEvents);
-    res.send(newEvents);
+    for (let i = 0; i < newEvents.length; i++) {
+      if (newEvents[i].city === city) {
+        for (let j = 0; j < newEvents[i].events.length; j++) {
+          if (newEvents[i].events[j].name === eventPage) {
+            if (newEvents[i].events[j].suscription.includes(email))
+              return res.json({
+                message:
+                  "This email has already been added to suscription list",
+              });
+            newEvents[i].events[j].suscription.push(email);
+          }
+        }
+      }
+    }
+
+    fs.writeFileSync(filePath, JSON.stringify({ events: newEvents }));
+    // console.log(newEvents);}
+    // res.send(newEvents);
 
     res.status(200).json({
       message: `Your email (${email}) has been added to the suscription list`,
