@@ -22,13 +22,15 @@ const AddEvent: NextPage<{ cities: any }> = ({ cities }) => {
     });
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
       <Title text="Add New Event" />
-      <div>
-        <form className="grid grid-cols-2 gap-2">
+      <div className="">
+        <form className="grid grid-cols-2 gap-5 mt-5" onSubmit={onSubmit}>
           <div className="flex flex-col justify-center">
             <label className="text-lg font-semibold">Event Name</label>
             <input
@@ -55,7 +57,7 @@ const AddEvent: NextPage<{ cities: any }> = ({ cities }) => {
             <textarea
               name="description"
               placeholder="Event Description"
-              className="w-700 h-200 rounded p-1"
+              className="w-full h-200 rounded p-1"
               onChange={onChange}
             />
           </div>
@@ -63,12 +65,17 @@ const AddEvent: NextPage<{ cities: any }> = ({ cities }) => {
             <label className="text-lg font-semibold">Event Picture</label>
             <input
               type="image"
-              className="w-700 h-200"
+              className="w-full h-200"
               name="image"
               onChange={onChange}
             />
           </div>
         </form>
+        <div className="flex justify-center mt-10">
+          <button className="bg-blue-300 p-2 rounded text-lg" type="submit">
+            Create New Event
+          </button>
+        </div>
       </div>
     </div>
   );
