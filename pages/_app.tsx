@@ -28,20 +28,25 @@ export default function App({ Component, pageProps }: AppProps) {
                 className="w-10 h-10 m-1 mx-3 hover:scale-105 transition-all cursor-pointer"
               />
             </Link>
-            <div className="w-80 flex justify-evenly">
+            <div className="flex justify-evenly">
               <Link href="/" passHref>
-                <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
+                <span className="mx-5 font-semibold text-lg hover:text-white transition-all">
                   Home
                 </span>
               </Link>
               <Link href="/events" passHref>
-                <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
+                <span className="mx-5 font-semibold text-lg hover:text-white transition-all">
                   Events
                 </span>
               </Link>
               <Link href="/about" passHref>
-                <span className="font-semibold text-lg hover:text-white transition-all hover:text-xl">
+                <span className="mx-5 font-semibold text-lg hover:text-white transition-all">
                   About us
+                </span>
+              </Link>
+              <Link href="/add-event" passHref>
+                <span className="mx-5 font-semibold text-lg hover:text-white transition-all">
+                  Add Event
                 </span>
               </Link>
             </div>
