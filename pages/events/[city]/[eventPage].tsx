@@ -9,7 +9,6 @@ import axios from "axios";
 const EventPage: NextPage<{ event: Event }> = ({ event }) => {
   const router = useRouter();
   const [email, setEmail] = React.useState<string>("");
-  const [message, setMessage] = React.useState<string>("");
 
   //updates "email" State value
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +25,7 @@ const EventPage: NextPage<{ event: Event }> = ({ event }) => {
 
     // if there is no match, correct value format
     if (!email.match(regex)) {
-      setMessage("Please use a correct email address");
+      alert("Please use a correct email address");
     }
 
     try {
@@ -42,7 +41,7 @@ const EventPage: NextPage<{ event: Event }> = ({ event }) => {
         throw new Error(`Status Code: ${response.status}`);
 
       // send "correct" message
-      setMessage(response.data.message);
+      alert(response.data.message);
       // reset "email" value
       setEmail("");
     } catch (error) {
