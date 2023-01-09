@@ -27,6 +27,7 @@ const AddEvent: NextPage<{ cities: string[] }> = ({ cities }) => {
               name="name"
               placeholder="Event Name"
               className="rounded p-1"
+              value={inputs.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setInputs({ ...inputs, [e.target.name]: e.target.value })
               }
@@ -34,8 +35,8 @@ const AddEvent: NextPage<{ cities: string[] }> = ({ cities }) => {
           </div>
           <div className="flex flex-col justify-center">
             <label className="text-lg font-semibold">Event City</label>
-
             <select
+              value={inputs.city}
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 e.target.value === "add-new-city"
                   ? window.open("/add-city", "_self")
@@ -55,6 +56,7 @@ const AddEvent: NextPage<{ cities: string[] }> = ({ cities }) => {
           <div className="flex flex-col justify-center">
             <label className="text-lg font-semibold">Event Description</label>
             <textarea
+              value={inputs.description}
               name="description"
               placeholder="Event Description"
               className="w-full h-200 rounded p-1"
@@ -67,6 +69,7 @@ const AddEvent: NextPage<{ cities: string[] }> = ({ cities }) => {
             <label className="text-lg font-semibold">Event Picture</label>
             <input
               type="image"
+              value={inputs.image}
               className="w-full h-200"
               name="image"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

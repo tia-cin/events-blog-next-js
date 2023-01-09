@@ -33,7 +33,7 @@ const AddCity: NextPage = () => {
           </div>
           <div className="grid grid-cols-2 gap-5 mt-10">
             <div className="flex flex-col justify-center">
-              <label className="text-lg font-semibold">Event Description</label>
+              <label className="text-lg font-semibold">City Description</label>
               <textarea
                 name="desc"
                 placeholder="City Description"
