@@ -17,7 +17,7 @@ const Events: NextPage<{ events: City[] }> = ({ events }) => (
 export default Events;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { events } = await require("../../data/data.json");
+  const { events } = await require("../../data/data.json"); // get all events data
 
   return {
     props: {

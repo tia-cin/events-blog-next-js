@@ -18,6 +18,7 @@ export default index;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { events } = await require("../../../data/data.json");
+  // get an array of every city of structure { params: { city: cityName } }
   const paths = events.map((event: City) => {
     return {
       params: {
@@ -32,10 +33,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { events } = await require("../../../data/data.json");
-  const { city }: any = context.params;
-  const cityEvents: City = events.filter((e: City) => e.city === city)[0];
+  const { city }: any = params; // city name from params
+  const cityEvents: City = events.find((e: City) => e.city === city); // get data from city from params
 
   return {
     props: {
