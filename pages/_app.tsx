@@ -49,6 +49,11 @@ export default function App({ Component, pageProps }: AppProps) {
                   Add Event
                 </span>
               </Link>
+              <Link href="/add-city" passHref>
+                <span className="mx-5 font-semibold text-lg hover:text-white transition-all">
+                  Add City
+                </span>
+              </Link>
             </div>
           </nav>
         </header>

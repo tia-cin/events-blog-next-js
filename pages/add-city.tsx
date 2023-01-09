@@ -31,6 +31,11 @@ const AddCity: NextPage = () => {
             </div>
           </div>
         </form>
+        <div className="flex justify-center mt-10">
+          <button className="bg-blue-300 p-2 rounded text-lg" type="submit">
+            Add New City
+          </button>
+        </div>
       </div>
     </div>
   );
