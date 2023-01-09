@@ -14,7 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Blog about touristic activities in cities around the world while season"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="https://cdn-icons-png.flaticon.com/512/3959/3959542.png"
+        />
       </Head>
       <div className="relative bg-slate-200 w-full h-full min-h-screen">
         <header className="bg-slate-300 h-16 p-1.5">
