@@ -3,24 +3,13 @@ import React from "react";
 import { Title } from "../components";
 import { City } from "../types";
 
-const AddEvent: NextPage = () => {
+const AddEvent: NextPage<{ cities: string[] }> = ({ cities }) => {
   const [inputs, setInputs] = React.useState({
     name: "",
     city: "",
     description: "",
     image: "",
   });
-
-  const onChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setInputs({
-      ...inputs,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,17 +27,30 @@ const AddEvent: NextPage = () => {
               name="name"
               placeholder="Event Name"
               className="rounded p-1"
-              onChange={onChange}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setInputs({ ...inputs, [e.target.name]: e.target.value })
+              }
             />
           </div>
           <div className="flex flex-col justify-center">
             <label className="text-lg font-semibold">Event City</label>
-            <input
-              type="text"
-              name="city"
-              onChange={onChange}
+
+            <select
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                e.target.value === "add-new-city"
+                  ? window.open("/add-city", "_self")
+                  : setInputs({ ...inputs, [e.target.name]: e.target.value })
+              }
+              name="name"
               className="rounded p-1"
-            />
+            >
+              {cities.map((city: string, i: number) => (
+                <option key={i} value={city} className="capitalize">
+                  {city}
+                </option>
+              ))}
+              <option value="add-new-city">Add New City</option>
+            </select>
           </div>
           <div className="flex flex-col justify-center">
             <label className="text-lg font-semibold">Event Description</label>
@@ -56,7 +58,9 @@ const AddEvent: NextPage = () => {
               name="description"
               placeholder="Event Description"
               className="w-full h-200 rounded p-1"
-              onChange={onChange}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setInputs({ ...inputs, [e.target.name]: e.target.value })
+              }
             />
           </div>
           <div className="flex flex-col justify-center">
@@ -65,7 +69,9 @@ const AddEvent: NextPage = () => {
               type="image"
               className="w-full h-200"
               name="image"
-              onChange={onChange}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setInputs({ ...inputs, [e.target.name]: e.target.value })
+              }
             />
           </div>
         </form>
@@ -80,3 +86,14 @@ const AddEvent: NextPage = () => {
 };
 
 export default AddEvent;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { events } = await require("../data/data.json");
+  const cities = events.map((c: City) => c.city);
+
+  return {
+    props: {
+      cities,
+    },
+  };
+};
