@@ -51,7 +51,7 @@ const EventPage: NextPage<{ event: Event }> = ({ event }) => {
 
   return (
     <div>
-      <Title text={event.name.split("-").join(" ")} />
+      <Title text="Event Detail" />
       <section className="flex flex-col md:flex-row bg-slate-100 p-2 rounded">
         <Image
           src={event.image}
@@ -61,6 +61,9 @@ const EventPage: NextPage<{ event: Event }> = ({ event }) => {
           className="rounded w-full"
         />
         <div className="relative">
+          <p className="m-5 mt-0 text-4xl capitalize">
+            {event.name.split("-").join(" ")}
+          </p>
           <p className="text-xl m-5 md:my-0 ">{event.description}</p>
           <span className="italic absolute right-0 bottom-0">
             - Article by Lorem Ipsum
