@@ -25,7 +25,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
   if (!events) return res.status(404).json({ message: "Events not found" });
 
   if (method === "POST") {
-    const { name, description, image, city } = req.body.eventInput;
+    const { name, description, image, city } = req.body;
 
     console.log(req.body);
 

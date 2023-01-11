@@ -26,7 +26,7 @@ const AddEvent: NextPage = () => {
       // send to API the data
       const response = await axios.post(
         "/api/add-event", // URL
-        { eventInput }, // DATA
+        eventInput, // DATA
         { headers: { "Content-Type": "application/json" } }
       );
 

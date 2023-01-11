@@ -5,7 +5,7 @@ import { City } from "../../types";
 
 const Events: NextPage<{ events: City[] }> = ({ events }) => (
   <div>
-    <Title text="Events Page" button="Add Event" />
+    <Title text="Events Page" button="Add City" />
     <div className="grid grid-cols-3 gap-8">
       {events.map((city: City, i: number) => (
         <CardCity key={i} city={city} />
