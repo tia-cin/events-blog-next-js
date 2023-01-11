@@ -5,7 +5,7 @@ import { CardEvent, Title } from "../../../components";
 
 const index: NextPage<{ data: City }> = ({ data }) => (
   <div>
-    <Title text={`Events in ${data.city}`} button={"Add event"} />
+    <Title text={`Events in ${data.city}`} button={`Add event ${data.city}`} />
     <div className="grid grid-cols-2 gap-8 max-[600px]:gap-3">
       {data.events.length > 1 ? (
         data.events.map((event: Event, i: number) => (
