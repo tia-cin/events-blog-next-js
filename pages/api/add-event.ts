@@ -40,6 +40,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     for (let i = 0; i < newEvents.length; i++) {
       // city name is same as city from client side
       if (newEvents[i].city === city) {
+        // add event
         newEvents[i].events.push({
           name: name.toLocaleLowerCase().split(" ").join("-"),
           description,

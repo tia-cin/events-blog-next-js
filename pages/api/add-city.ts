@@ -35,6 +35,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     // create a copy of data
     let newEvents: City[] = events;
 
+    // add city
     newEvents.push({
       city: city.toLocaleLowerCase(),
       desc,
