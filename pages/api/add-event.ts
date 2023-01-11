@@ -28,14 +28,29 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     const { name, description, image, city } = req.body;
 
     // if user input format is not correct, send message to fix it
-    if (!name || !description || !image) {
+    if (!name || !description || !image || !city) {
       res.status(422).json({ message: "Please submit data requested" });
     }
 
     // create a copy of data
+    // create a copy of data
     let newEvents: City[] = events;
 
+    // loop through events
+    for (let i = 0; i < newEvents.length; i++) {
+      // city name is same as city from client side
+      if (newEvents[i].city === city) {
+        newEvents[i].events.push({
+          name: name.toLocaleLowerCase().split(" ").join("-"),
+          description,
+          image,
+          suscription: [],
+        });
+      }
+    }
+
     fs.writeFileSync(filePath, JSON.stringify({ events: newEvents }));
+    // res.send(newEvents);
 
     res.status(200).json({
       message: `Event ${name} in ${city} has been added to our events`,
