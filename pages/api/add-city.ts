@@ -36,7 +36,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     let newEvents: City[] = events;
 
     newEvents.push({
-      city,
+      city: city.toLocaleLowerCase(),
       desc,
       image,
       events: [],

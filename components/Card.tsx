@@ -17,7 +17,7 @@ export const CardCity: React.FC<{ city: City }> = ({ city }) => (
         <h2 className="text-lg font-medium capitalize">
           Events in {city.city}
         </h2>
-        <p>{city.desc.slice(0, 250).concat("...")}</p>
+        <p>{city.desc}</p>
       </div>
     </div>
     <Link href={`/events/${city.city}`} passHref>
