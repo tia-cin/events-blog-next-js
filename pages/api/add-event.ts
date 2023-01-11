@@ -25,14 +25,20 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
   if (!events) return res.status(404).json({ message: "Events not found" });
 
   if (method === "POST") {
-    const { name, description, image, city } = req.body;
+    const { name, description, image, city } = req.body.eventInput;
+
+    console.log(req.body);
 
     // if user input format is not correct, send message to fix it
-    if (!name || !description || !image || !city) {
-      res.status(422).json({ message: "Please submit data requested" });
-    }
+    if (!name) {
+      res.status(422).json({ message: "Please submit name requested" });
+    } else if (!description)
+      res.status(422).json({ message: "Please submit description requested" });
+    else if (!image)
+      res.status(422).json({ message: "Please submit image requested" });
+    else if (!city)
+      res.status(422).json({ message: "Please submit city requested" });
 
-    // create a copy of data
     // create a copy of data
     let newEvents: City[] = events;
 
