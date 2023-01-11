@@ -10,9 +10,13 @@ const index: NextPage<{ data: City }> = ({ data }) => (
       button={`Add event in ${data.city}`}
     />
     <div className="grid grid-cols-2 gap-8 max-[600px]:gap-3">
-      {data.events.map((event: Event, i: number) => (
-        <CardEvent event={event} city={data.city} key={i} />
-      ))}
+      {data.events.length > 1 ? (
+        data.events.map((event: Event, i: number) => (
+          <CardEvent event={event} city={data.city} key={i} />
+        ))
+      ) : (
+        <p className="text-xl">No events found</p>
+      )}
     </div>
   </div>
 );
