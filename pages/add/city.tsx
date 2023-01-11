@@ -32,7 +32,7 @@ const AddCity: NextPage = () => {
 
       // send "correct" message
       alert(response.data.message);
-      // reset "email" value
+      // reset state values
       setCityInput({ city: "", desc: "", image: "" });
     } catch (error) {
       console.log(error);

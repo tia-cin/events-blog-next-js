@@ -36,7 +36,7 @@ const AddEvent: NextPage = () => {
 
       // send "correct" message
       alert(response.data.message);
-      // reset "email" value
+      // reset state values
       setEventInput({ name: "", description: "", image: "", city });
     } catch (error) {
       console.log(error);
